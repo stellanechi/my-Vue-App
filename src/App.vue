@@ -22,7 +22,7 @@ export default {
 
 <style></style> -->
 
-<script>
+<!-- <script>
 export default {
   data: () => ({
     buttonMessage: "Login User",
@@ -72,35 +72,74 @@ export default {
   <div>{{ getAdultStudents }}</div>
 </template>
 
-<style></style>
+<style></style> -->
 
-<!-- <script setup>
-import HelloWorld from './components/HelloWorld.vue'
+<script>
+export default {
+  data: () => ({
+    count: 0,
+  }),
+
+  methods: {
+    increment() {
+      this.count++;
+    },
+    decrement() {
+      this.count--;
+    },
+    reset() {
+      this.count = 0;
+    },
+  },
+
+  computed: {
+    counterMessage() {
+      if (this.count > 0) return `Count is positive: ${this.count}`;
+      if (this.count < 0) return `Count is negative: ${this.count}`;
+      return `Count is zero`;
+    },
+  },
+};
 </script>
 
 <template>
-  <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
+  <div class="counter-container">
+    <h2>Simple Counter App</h2>
+    <h3>{{ counterMessage }}</h3>
+    <div class="buttons">
+      <button @click="decrement">-</button>
+      <span>{{ count }}</span>
+      <button @click="increment">+</button>
+    </div>
+    <button @click="reset">Reset</button>
   </div>
-  <HelloWorld msg="Vite + Vue" />
 </template>
 
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+<style>
+.counter-container {
+  text-align: center;
+  padding: 20px;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin: 10px 0;
 }
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
+
+button {
+  background-color: #2b7dfa;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
 }
-</style> -->
+
+button:hover {
+  background-color: #1e5fc5;
+}
+</style>
