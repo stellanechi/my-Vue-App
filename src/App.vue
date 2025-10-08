@@ -104,14 +104,16 @@ export default {
 
 <template>
   <div class="counter-container">
-    <h2>Simple Counter App</h2>
-    <h3>{{ counterMessage }}</h3>
-    <div class="buttons">
-      <button @click="decrement">-</button>
-      <span>{{ count }}</span>
-      <button @click="increment">+</button>
+    <div class="counter-content">
+      <h2>Simple Counter App</h2>
+      <h3>{{ counterMessage }}</h3>
+      <div class="buttons">
+        <button @click="decrement">-</button>
+        <span>{{ count }}</span>
+        <button @click="increment">+</button>
+      </div>
+      <button class="reset" @click="reset">Reset</button>
     </div>
-    <button @click="reset">Reset</button>
   </div>
 </template>
 
@@ -119,27 +121,45 @@ export default {
 .counter-container {
   text-align: center;
   padding: 20px;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  width: 500px;
+  margin: 50px auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #1abc9c;
+}
+.counter-content h2 {
+  margin-bottom: 10px;
+  color: #333;
+}
+.counter-content h3 {
+  margin-bottom: 20px;
+  color: #555;
 }
 
 .buttons {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 15px;
+  gap: 18px;
   margin: 10px 0;
 }
 
 button {
-  background-color: #2b7dfa;
-  color: white;
+  background-color: white;
+  color: #1abc9c;
   border: none;
-  padding: 8px 14px;
+  padding: 8px 20px;
   border-radius: 6px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 22px;
 }
 
 button:hover {
-  background-color: #1e5fc5;
+  background-color: #bff1e7;
+}
+
+reset {
+  margin-top: 15px;
 }
 </style>
