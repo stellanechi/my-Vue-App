@@ -85,7 +85,9 @@ export default {
       this.count++;
     },
     decrement() {
-      this.count--;
+      if (this.count > 0) {
+        this.count--;
+      }
     },
     reset() {
       this.count = 0;
@@ -131,6 +133,7 @@ export default {
 .counter-content h2 {
   margin-bottom: 10px;
   color: #333;
+  font-size: 3rempx;
 }
 .counter-content h3 {
   margin-bottom: 20px;
