@@ -21,6 +21,58 @@ export default {
 </template>
 
 <style></style>
+<!-- 
+<script>
+export default {
+  data: () => ({
+    buttonMessage: 'Login User',
+    isLoggedIn: false,
+    user: null,
+    students: [
+      {name: 'Franklin', age: 40},
+      {name: 'David', age: 20},
+      {name: 'Jessica', age: 12},
+      {name: 'Yahaya', age: 14},
+      {name: 'Stella', age: 18},
+      {name: 'Samuel', age: 19},
+      {name: 'Adamu', age: 21},
+    ]
+  }),
+  methods: {
+    loginUser(){
+     // Login Yourself
+     this.user = {firstName: 'Funmilayo',lastName: 'Oba'}
+     this.isLoggedIn = true;
+    },
+    logout(){
+     // Login Yourself
+     this.user = null
+    },
+  },
+  computed: {
+    getFullName(){
+      return this.user ?  `${this.user.firstName} ${this.user.lastName}` : 'No User Logged In'
+    },
+    getAdultStudents(){
+      return this.students.filter(s => s.age >= 18)
+    },
+    getLoggedInProperties(){
+      return {...this.user, isLoggedIn: this.isLoggedIn}
+    }
+  }
+}
+</script>
+ 
+<template>
+  <button @click = "loginUser"> {{ buttonMessage }}</button>
+  <button @click = "logout"> Logout</button>
+  <div>Welcome: {{getFullName}}</div>
+  <div>{{getAdultStudents}}</div>
+</template>
+ 
+<style>
+ 
+</style> -->
 
 <!-- <script setup>
 import HelloWorld from './components/HelloWorld.vue'
