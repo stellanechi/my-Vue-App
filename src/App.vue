@@ -74,7 +74,7 @@ export default {
 
 <style></style> -->
 
-<script>
+<!-- <script>
 export default {
   data: () => ({
     count: 0,
@@ -164,5 +164,124 @@ button:hover {
 
 reset {
   margin-top: 15px;
+}
+</style> -->
+
+<script>
+export default {
+  data() {
+    return {
+      quotes: [
+        {
+          text: "Believe you can and you're halfway there.",
+          author: "Theodore Roosevelt",
+        },
+        {
+          text: "It always seems impossible until it's done.",
+          author: "Nelson Mandela",
+        },
+        {
+          text: "Do what you can, with what you have, where you are.",
+          author: "Theodore Roosevelt",
+        },
+        {
+          text: "Act as if what you do makes a difference. It does.",
+          author: "William James",
+        },
+        {
+          text: "The future belongs to those who prepare for it today.",
+          author: "Malcolm X",
+        },
+      ],
+      colors: ["#42b983", "#ff7f50", "#1e90ff", "#e91e63", "#9c27b0"],
+      currentQuote: null,
+      currentColor: "#42b983",
+    };
+  },
+
+  methods: {
+    generateQuote() {
+      const randomIndex = Math.floor(Math.random() * this.quotes.length);
+      const randomColor =
+        this.colors[Math.floor(Math.random() * this.colors.length)];
+
+      this.currentQuote = this.quotes[randomIndex];
+      this.currentColor = randomColor;
+    },
+  },
+
+  computed: {
+    quoteLength() {
+      return this.currentQuote ? this.currentQuote.text.length : 0;
+    },
+  },
+};
+</script>
+
+<template>
+  <div class="quote-contaioner">
+    <h1>Random Quote Generator</h1>
+
+    <div v-if="currentQuote">
+      <blockquote :style="{ color: currentColor }">
+        “{{ currentQuote.text }}”
+      </blockquote>
+      <p>- {{ currentQuote.author }}</p>
+    </div>
+
+    <div v-else>
+      <p>No quote selected yet. Click the button below to generate one</p>
+    </div>
+
+    <button @click="generateQuote">New Quote</button>
+
+    <p class="info">Quote Length: {{ quoteLength }} characters</p>
+  </div>
+</template>
+
+<style scoped>
+.quote-contaioner {
+  font-family: "Poppins", sans-serif;
+  text-align: center;
+  margin-top: 80px;
+  background: #f9fafb;
+  padding: 40px;
+  border-radius: 16px;
+  width: 400px;
+  margin-inline: auto;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  color: #333;
+  margin-bottom: 20px;
+}
+
+blockquote {
+  font-size: 1.2rem;
+  font-style: italic;
+  margin: 20px 0;
+  transition: color 0.3s ease;
+}
+
+button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #42b983;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #2f986e;
+}
+
+.info {
+  margin-top: 15px;
+  color: #666;
+  font-size: 0.9rem;
 }
 </style>
