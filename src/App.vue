@@ -196,6 +196,9 @@ export default {
       colors: ["#42b983", "#ff7f50", "#1e90ff", "#e91e63", "#9c27b0"],
       currentQuote: null,
       currentColor: "#42b983",
+      imageUrl: "https://media.giphy.com/media/3o7aD2saalBwwftBIY/giphy.gif",
+      imageAlt: "Loading...",
+      imageWidth: 200,
     };
   },
 
@@ -212,10 +215,18 @@ export default {
 
   computed: {
     quoteLength() {
-      return this.currentQuote ? this.currentQuote.text.length : 0;
+     if (!this.currentQuote) {
+      return "Not a quote";
+    } else {
+      return `${this.currentQuote.text.length} characters`;
+    }
     },
-  },
-};
+    // quoteLength() {
+    //   return this.currentQuote ? this.currentQuote.text.length : 0;
+    // },
+
+  // },
+},
 </script>
 
 <template>
@@ -229,13 +240,17 @@ export default {
       <p>- {{ currentQuote.author }}</p>
     </div>
 
+    <div v-else-if="!currentQuote">
+      <img :src="imageUrl" :alt="imageAlt" :width="imageWidth" />
+    </div>
+
     <div v-else>
       <p>No quote selected yet. Click the button below to generate one</p>
     </div>
 
     <button @click="generateQuote">New Quote</button>
 
-    <p class="info">Quote Length: {{ quoteLength }} characters</p>
+    <p class="info">Quote Length: {{ quoteLength }}</p>
   </div>
 </template>
 
